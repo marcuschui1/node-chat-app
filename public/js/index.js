@@ -10,5 +10,10 @@ socket.on('disconnect', function() {
 
 socket.on('newMessage', function(message) {
   console.log('newMessage', message);
-  document.getElementsByTagName('p')[0].innerText = message.text;
+  console.log(message.from);
+  console.log(message.text);
+  //   document.getElementsByTagName('p')[0].innerText = message.text;
+  document.getElementById('div2').innerHTML =
+    `<p>from:${message.from} text:${message.text}</p>` +
+    document.getElementById('div2').innerHTML;
 });

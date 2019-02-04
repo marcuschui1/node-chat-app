@@ -5,8 +5,23 @@
     <title>node chat app</title>
   </head>
   <body>
-    <p>Welcome to the marcus chat app</p>
+    <div id="div1">
+      <label for="">User</label>
+      <input type="text" id="msgFrom" />
+      <label for="">Text</label>
+      <input type="text" id="msgText" />
+      <button onclick="sendMsg()">Send Msg</button>
+    </div>
+    <div id="div2"></div>
   </body>
   <script src="/socket.io/socket.io.js"></script>
   <script src="/js/index.js"></script>
+  <script>
+    function sendMsg() {
+      socket.emit('createMessage', {
+        from: document.getElementById('msgFrom').value,
+        text: document.getElementById('msgText').value
+      });
+    }
+  </script>
 </html>
