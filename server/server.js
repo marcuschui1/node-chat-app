@@ -29,6 +29,7 @@ io.on('connection', socket => {
     users.addUser(socket.id, params.name, params.room);
 
     io.to(params.room).emit('updateUserList', users.getUserList(params.room));
+
     socket.emit(
       'newMessage',
       generateMessage('Admin', 'Welcome to the chat app')
