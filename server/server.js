@@ -15,6 +15,9 @@ app.use(express.static(publicPath));
 io.on('connection', socket => {
   console.log('New user connected');
 
+  socket.emit('peopleCount', io.sockets.server.engine.clientsCount);
+  socket.broadcast.emit('peopleCount', io.sockets.server.engine.clientsCount);
+
   // socket.emit from Admin in text Welcome to the chat app
   socket.emit(
     'newMessage',
@@ -42,6 +45,7 @@ io.on('connection', socket => {
 
   socket.on('disconnect', () => {
     console.log('User was disconnected');
+    socket.broadcast.emit('peopleCount', io.sockets.server.engine.clientsCount);
   });
 });
 

@@ -52,6 +52,10 @@ socket.on('newLocationMessage', function(message) {
   scrollToBottom();
 });
 
+socket.on('peopleCount', function(message) {
+  jQuery('#people-count').text(`Online(${message})`);
+});
+
 jQuery('#message-form').on('submit', function(e) {
   e.preventDefault();
 
